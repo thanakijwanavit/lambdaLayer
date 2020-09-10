@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: >
+  lambda-layer-sam
+  create lambda layer using sam
+
+
+Globals:
+  Function:
+    Timeout: 3
+
+Resources:
+  SharedLayer:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: pynamodb-layer
+      ContentUri: pynamodb/package.zip
+      CompatibleRuntimes:
+        - python3.8
+Outputs:
+  LayerArn:
+    Value: !Ref SharedLayer
