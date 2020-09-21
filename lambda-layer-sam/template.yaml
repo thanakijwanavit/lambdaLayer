@@ -10,13 +10,65 @@ Globals:
     Timeout: 3
 
 Resources:
-  SharedLayer:
+  Pynamodb:
     Type: AWS::Serverless::LayerVersion
     Properties:
       LayerName: pynamodb-layer
       ContentUri: pynamodb/package.zip
       CompatibleRuntimes:
         - python3.8
+  PynamoLayerPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref Pynamodb
+      Principal: "*"
+  Pandas:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: pandas-layer
+      ContentUri: pandas/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  PandasLayerPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref Pandas
+      Principal: "*"
+  Line:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: line-layer
+      ContentUri: line/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  LineLayerPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref Line
+      Principal: "*"
+  CloudSearch:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: cloudsearch-layer
+      ContentUri: cloudsearch/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  CloudSearchLayerPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref CloudSearch
+      Principal: "*"
+
 Outputs:
-  LayerArn:
-    Value: !Ref SharedLayer
+  PynamoArn:
+    Value: !Ref Pynamodb
+  PandasArn:
+    Value: !Ref Pandas
+  LineArn:
+    Value: !Ref Line
+  CloudSearchArn:
+    Value: !Ref CloudSearch
