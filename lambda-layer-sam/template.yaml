@@ -63,6 +63,20 @@ Resources:
       LayerVersionArn: !Ref CloudSearch
       Principal: "*"
 
+  Lambda:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: lambda-layer
+      ContentUri: lambda/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  LambdaPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref Lambda
+      Principal: "*"
+
 Outputs:
   PynamoArn:
     Value: !Ref Pynamodb
@@ -72,3 +86,5 @@ Outputs:
     Value: !Ref Line
   CloudSearchArn:
     Value: !Ref CloudSearch
+  Lambda:
+    Value: !Ref Lambda

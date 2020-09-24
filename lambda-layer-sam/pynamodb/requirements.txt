@@ -1,1 +1,3 @@
-pynamodb
+dynamocacher
+amazon-dax-client
+pynamodb-dax

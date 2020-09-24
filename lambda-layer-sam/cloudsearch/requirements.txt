@@ -1,0 +1,3 @@
+cloudsearch==0.0.8
+pandas
+numpy
