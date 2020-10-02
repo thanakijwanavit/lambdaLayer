@@ -105,6 +105,21 @@ Resources:
       LayerVersionArn: !Ref VillaInvDatabase
       Principal: "*"
 
+  VillaWalletRequirements:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: villa-wallet-requirement-layer
+      ContentUri: ./villaWalletRequirements/package.zip
+      CompatibleRuntimes:
+        - python3.8
+
+  VillaWalletRequirementsPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref VillaWalletRequirements 
+      Principal: "*"
+
 Outputs:
   PynamoArn:
     Value: !Ref Pynamodb
@@ -120,3 +135,5 @@ Outputs:
     Value: !Ref S3bz
   VillaInvDatabase:
     Value: !Ref VillaInvDatabase
+  VillaWalletRequirements:
+    Value: !Ref VillaWalletRequirements

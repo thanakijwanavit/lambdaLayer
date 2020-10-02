@@ -1,0 +1,8 @@
+s3bz
+villaInvDatabase
+pandas
+line-bot-sdk
+lambdasdk
+pytz
+dynamocacher
+antlr4-python3-runtime
