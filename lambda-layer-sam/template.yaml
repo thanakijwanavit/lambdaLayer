@@ -77,6 +77,34 @@ Resources:
       LayerVersionArn: !Ref Lambda
       Principal: "*"
 
+  S3bz:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: s3bz-layer
+      ContentUri: s3bz/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  S3bzPermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref S3bz
+      Principal: "*"
+
+  VillaInvDatabase:
+    Type: AWS::Serverless::LayerVersion
+    Properties:
+      LayerName: villa-inv-database-layer
+      ContentUri: villaInvDatabase/package.zip
+      CompatibleRuntimes:
+        - python3.8
+  VillaInvDatabasePermission:
+    Type: AWS::Lambda::LayerVersionPermission
+    Properties:
+      Action: lambda:GetLayerVersion
+      LayerVersionArn: !Ref VillaInvDatabase
+      Principal: "*"
+
 Outputs:
   PynamoArn:
     Value: !Ref Pynamodb
@@ -88,3 +116,7 @@ Outputs:
     Value: !Ref CloudSearch
   Lambda:
     Value: !Ref Lambda
+  S3bz:
+    Value: !Ref S3bz
+  VillaInvDatabase:
+    Value: !Ref VillaInvDatabase
