@@ -7,4 +7,6 @@ s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-jx3h3o6mj7ty"
 s3_prefix = "lambda-layer-sam"
 region = "ap-southeast-1"
 profile = "villaaws"
+confirm_changeset = true
 capabilities = "CAPABILITY_IAM"
+
