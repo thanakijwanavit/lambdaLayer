@@ -23,7 +23,16 @@ jobs:
       
       - name: scan and build all layers
         run: |
-          bash <(curl -s https://gist.githubusercontent.com/thanakijwanavit/fd8a08c282dcf366a3cbbf086e47b830/raw/buildAllLayers.sh)
+          cd lambda-layer-sam &&\
+            cd cloudsearch && bash lambdaLayer.sh && cd .. &&\
+            cd lambda && bash lambdaLayer.sh && cd .. &&\
+            cd line && bash lambdaLayer.sh && cd .. &&\
+            cd pandas && bash lambdaLayer.sh && cd .. &&\
+            cd pynamodb && bash lambdaLayer.sh && cd .. &&\
+            cd s3bz && bash lambdaLayer.sh && cd .. &&\
+            cd villaInvDatabase && bash lambdaLayer.sh && cd .. &&\
+            cd VillaWalletRequirements && bash lambdaLayer.sh && cd .. &&\
+
 
       - name: zip everything
         run: zip -r everything.zip .
