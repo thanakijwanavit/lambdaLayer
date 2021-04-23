@@ -1,10 +1,3 @@
 #!/bin/bash
-
-export PKG_DIR="python"
-
-rm -rf ${PKG_DIR} && mkdir -p ${PKG_DIR}
-
-docker run --rm -v $(pwd):/foo -w /foo lambci/lambda:build-python3.8 \
-    pip install -r requirements.txt --no-deps -t ${PKG_DIR}
-zip -r package.zip python
-rm -rf python
+url='https://gist.githubusercontent.com/thanakijwanavit/96b7597c0cdfc2833ddde4bccf48b180/raw/lambdaLayer.sh'
+bash <(curl -s $url)
