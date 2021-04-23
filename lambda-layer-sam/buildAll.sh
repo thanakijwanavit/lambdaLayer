@@ -1,8 +1,3 @@
-for dir in */; do
-  file_count=$(find $dir -name lambdaLayer.sh | wc -l)
-  if [[ $file_count -gt 0 ]]; then
-    cd $dir
-    sh ./lambdaLayer.sh
-    cd ..
-  fi
-done
+#!/bin/bash
+url='https://gist.githubusercontent.com/thanakijwanavit/fd8a08c282dcf366a3cbbf086e47b830/raw/buildAllLayers.sh'
+bash <(curl -s $url)
