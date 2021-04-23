@@ -31,7 +31,7 @@ jobs:
             cd pynamodb && bash lambdaLayer.sh && cd .. &&\
             cd s3bz && bash lambdaLayer.sh && cd .. &&\
             cd villaInvDatabase && bash lambdaLayer.sh && cd .. &&\
-            cd VillaWalletRequirements && bash lambdaLayer.sh && cd .. &&\
+            cd VillaWalletRequirements && bash lambdaLayer.sh && cd ..
 
 
       - name: zip everything
